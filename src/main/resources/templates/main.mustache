@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form method="post">
+        <input type="text" name="equipment" list="equipment" placeholder="equipment category">
+        <datalist id="equipment">
+            <option>TV</option>
+            <option>Fridge</option>
+            <option>Microwave</option>
+            <option>Washer</option>
+            <option>Dishwasher</option>
+            <option>Coffee machine</option>
+        </datalist>
+        <input type="text" name="brand" placeholder="brand of equipment" />
+        <input type="text" name="color" list="color" placeholder="color" />
+        <datalist id="color">
+            <option>Red</option>
+            <option>Orange</option>
+            <option>Yellow</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Violet</option>
+            <option>Black</option>
+            <option>White</option>
+        </datalist>
+        <input type="text" name="description" placeholder="description" />
+        <input type="text" name="status" list="status" placeholder="status" />
+        <datalist id="status">
+            <option>Working</option>
+            <option>Broken</option>
+        </datalist>
+        <input type="text" name="comment" placeholder="comment" />
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">ADD</button>
+    </form>
+</div>
+<form method="post" action="filter">
+    <input type="text" name="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Search by equipment</button>
+</form>
+<div><strong>Equipment list</strong></div>
+{{#messages}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{equipment}}</span>
+        <span>{{brand}}</span>
+        <span>{{color}}</span>
+        <span>{{description}}</span>
+        <span>{{status}}</span>
+        <q><span>{{comment}}</span></q>
+        - <strong>{{authorName}}</strong>
+    </div>
+{{/messages}}
+</body>
+</html>
